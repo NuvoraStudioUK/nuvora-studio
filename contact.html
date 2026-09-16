@@ -58,8 +58,8 @@ body {
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--mid-border);
 }
-.nav-logo { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; color: var(--off-white); letter-spacing: 0.02em; }
-.nav-logo span { color: var(--gold); }
+.nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 36px; width: auto; }
 .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
 .nav-links a { color: var(--muted); font-size: 0.8125rem; font-weight: 400; letter-spacing: 0.04em; transition: color 0.2s; }
 .nav-links a:hover { color: var(--off-white); }
@@ -215,7 +215,6 @@ body {
 .field select option { background: #1a1010; color: var(--off-white); }
 .field textarea { resize: none; min-height: 100px; line-height: 1.7; }
 
-/* Formspree inline errors */
 [data-fs-error] {
   font-size: 0.7rem;
   color: #e07070;
@@ -265,8 +264,8 @@ footer {
   padding: 4rem var(--pad-x) 3rem;
   display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem;
 }
-.footer-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--off-white); letter-spacing: 0.02em; display: inline-block; margin-bottom: 0.875rem; }
-.footer-logo span { color: var(--gold); }
+.footer-logo { display: inline-block; margin-bottom: 0.875rem; }
+.footer-logo img { height: 32px; width: auto; }
 .footer-tagline { font-size: 0.8125rem; color: var(--muted); font-weight: 300; line-height: 1.65; max-width: 220px; margin-bottom: 1.5rem; }
 .footer-social { display: flex; gap: 1.25rem; }
 .footer-social a { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; transition: color 0.2s; }
@@ -305,7 +304,7 @@ footer {
 
 <!-- NAV -->
 <div id="site-nav" class="site-nav">
-  <a href="./" class="nav-logo">Nuvora <span>Studio</span></a>
+  <a href="./" class="nav-logo"><img src="images/logo.png" alt="Nuvora Studio"></a>
   <ul class="nav-links" role="list">
     <li><a href="./">Home</a></li>
     <li><a href="services.html">Services</a></li>
@@ -429,7 +428,7 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div>
-    <a href="./" class="footer-logo">Nuvora <span>Studio</span></a>
+    <a href="./" class="footer-logo"><img src="images/logo.png" alt="Nuvora Studio"></a>
     <p class="footer-tagline">Premium event experiences for weddings, parties and corporate events across Manchester and the UK.</p>
     <div class="footer-social">
       <a href="https://instagram.com/nuvorastudiouk" target="_blank" rel="noopener">Instagram</a>

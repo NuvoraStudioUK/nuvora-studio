@@ -127,19 +127,11 @@ body {
 }
 
 .contact-details { display: flex; flex-direction: column; gap: 0.625rem; }
-.contact-detail {
-  font-size: 0.875rem;
-  font-weight: 300;
-  color: var(--muted);
-}
+.contact-detail { font-size: 0.875rem; font-weight: 300; color: var(--muted); }
 .contact-detail a { color: var(--gold); transition: opacity 0.2s; }
 .contact-detail a:hover { opacity: 0.75; }
 
-.contact-left-footer {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
+.contact-left-footer { display: flex; flex-direction: column; gap: 1.5rem; }
 
 .contact-response {
   font-size: 0.8rem;
@@ -163,10 +155,7 @@ body {
 .contact-socials a:hover { color: var(--gold); border-color: var(--gold); }
 
 /* RIGHT PANEL — FORM */
-.contact-right {
-  padding: 9rem var(--pad-x) 6rem;
-  background: var(--black);
-}
+.contact-right { padding: 9rem var(--pad-x) 6rem; background: var(--black); }
 
 .form-heading {
   font-family: var(--font-display);
@@ -179,9 +168,7 @@ body {
 }
 
 .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
-
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-
 .field { display: flex; flex-direction: column; gap: 0.5rem; }
 .field-full { grid-column: 1 / -1; }
 
@@ -215,10 +202,7 @@ body {
 .field textarea::placeholder { color: rgba(168,159,149,0.35); }
 .field input:focus,
 .field select:focus,
-.field textarea:focus {
-  outline: none;
-  border-bottom-color: var(--gold);
-}
+.field textarea:focus { outline: none; border-bottom-color: var(--gold); }
 .field select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23A89F95' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -230,6 +214,15 @@ body {
 }
 .field select option { background: #1a1010; color: var(--off-white); }
 .field textarea { resize: none; min-height: 100px; line-height: 1.7; }
+
+/* Formspree inline errors */
+[data-fs-error] {
+  font-size: 0.7rem;
+  color: #e07070;
+  margin-top: 0.25rem;
+  min-height: 1rem;
+  display: block;
+}
 
 .form-submit {
   display: flex;
@@ -244,16 +237,12 @@ body {
   display: inline-block; background: var(--gold); color: var(--black);
   font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
   padding: 0.9rem 2.25rem; border-radius: var(--radius);
-  border: none; cursor: pointer; transition: background 0.2s;
+  border: none; cursor: pointer; transition: background 0.2s, opacity 0.2s;
 }
 .btn-primary:hover { background: var(--gold-light); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 
-.form-note {
-  font-size: 0.75rem;
-  font-weight: 300;
-  color: var(--muted);
-  line-height: 1.6;
-}
+.form-note { font-size: 0.75rem; font-weight: 300; color: var(--muted); line-height: 1.6; }
 
 /* ── SUCCESS STATE ── */
 .form-success {
@@ -265,12 +254,7 @@ body {
   margin-top: 2rem;
 }
 .form-success.visible { display: flex; }
-.success-heading {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 400;
-  color: var(--off-white);
-}
+.success-heading { font-family: var(--font-display); font-size: 2rem; font-weight: 400; color: var(--off-white); }
 .success-heading em { font-style: italic; color: var(--gold-light); }
 .success-body { font-size: 0.9rem; font-weight: 300; color: var(--muted); line-height: 1.8; }
 
@@ -305,13 +289,7 @@ footer {
 @media (max-width: 1024px) {
   :root { --pad-x: 2.5rem; }
   .page-wrapper { grid-template-columns: 1fr; }
-  .contact-left {
-    position: static;
-    height: auto;
-    padding-bottom: 3rem;
-    border-right: none;
-    border-bottom: 1px solid var(--mid-border);
-  }
+  .contact-left { position: static; height: auto; padding-bottom: 3rem; border-right: none; border-bottom: 1px solid var(--mid-border); }
 }
 @media (max-width: 768px) {
   :root { --pad-x: 1.5rem; }
@@ -341,7 +319,7 @@ footer {
 <main>
   <div class="page-wrapper">
 
-    <!-- LEFT — INTRO + DETAILS -->
+    <!-- LEFT -->
     <div class="contact-left">
       <div>
         <p class="contact-eyebrow">Get in touch</p>
@@ -370,22 +348,24 @@ footer {
         <div class="form-row">
           <div class="field">
             <label for="name">Your name <span>*</span></label>
-            <input type="text" id="name" name="name" placeholder="Jane Smith" required autocomplete="name">
+            <input type="text" id="name" name="name" placeholder="Jane Smith" required autocomplete="name" data-fs-field>
+            <span data-fs-error="name"></span>
           </div>
           <div class="field">
             <label for="email">Email address <span>*</span></label>
-            <input type="email" id="email" name="email" placeholder="jane@example.com" required autocomplete="email">
+            <input type="email" id="email" name="email" placeholder="jane@example.com" required autocomplete="email" data-fs-field>
+            <span data-fs-error="email"></span>
           </div>
         </div>
 
         <div class="form-row">
           <div class="field">
             <label for="phone">Phone number</label>
-            <input type="tel" id="phone" name="phone" placeholder="07700 000 000" autocomplete="tel">
+            <input type="tel" id="phone" name="phone" placeholder="07700 000 000" autocomplete="tel" data-fs-field>
           </div>
           <div class="field">
             <label for="event-type">Event type <span>*</span></label>
-            <select id="event-type" name="event_type" required>
+            <select id="event-type" name="event_type" required data-fs-field>
               <option value="" disabled selected>Select event type</option>
               <option value="wedding">Wedding</option>
               <option value="birthday">Birthday</option>
@@ -393,17 +373,19 @@ footer {
               <option value="prom">Prom &amp; graduation</option>
               <option value="other">Other</option>
             </select>
+            <span data-fs-error="event_type"></span>
           </div>
         </div>
 
         <div class="form-row">
           <div class="field">
             <label for="event-date">Event date <span>*</span></label>
-            <input type="date" id="event-date" name="event_date" required>
+            <input type="date" id="event-date" name="event_date" required data-fs-field>
+            <span data-fs-error="event_date"></span>
           </div>
           <div class="field">
             <label for="duration">How long do you need us?</label>
-            <select id="duration" name="duration">
+            <select id="duration" name="duration" data-fs-field>
               <option value="" disabled selected>Select duration</option>
               <option value="silver">4 hrs — Silver</option>
               <option value="gold">6 hrs — Gold</option>
@@ -415,16 +397,16 @@ footer {
 
         <div class="field field-full">
           <label for="venue">Venue or location</label>
-          <input type="text" id="venue" name="venue" placeholder="Venue name, city">
+          <input type="text" id="venue" name="venue" placeholder="Venue name, city" data-fs-field>
         </div>
 
         <div class="field field-full">
           <label for="message">Anything else we should know?</label>
-          <textarea id="message" name="message" placeholder="Tell us more about your event…"></textarea>
+          <textarea id="message" name="message" placeholder="Tell us more about your event…" data-fs-field></textarea>
         </div>
 
         <div class="form-submit">
-          <button type="submit" class="btn-primary">Send Your Enquiry</button>
+          <button type="submit" class="btn-primary" data-fs-submit-btn>Send Your Enquiry</button>
           <p class="form-note">We reply within 24 hours.</p>
         </div>
 
@@ -477,21 +459,28 @@ footer {
   <p class="footer-legal">nuvorastudio.co.uk</p>
 </div>
 
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
 <script>
   const nav = document.getElementById('site-nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 
-  const form    = document.getElementById('contactForm');
-  const success = document.getElementById('formSuccess');
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); return; }
-    form.style.display = 'none';
-    success.classList.add('visible');
-    window.scrollTo({ top: success.offsetTop - 120, behavior: 'smooth' });
+  window.addEventListener('load', () => {
+    window.formspree = window.formspree || function () {
+      (formspree.q = formspree.q || []).push(arguments);
+    };
+    formspree('initForm', {
+      formElement: '#contactForm',
+      formId: 'mbglreyl',
+      onSuccess: function () {
+        document.getElementById('contactForm').style.display = 'none';
+        const success = document.getElementById('formSuccess');
+        success.classList.add('visible');
+        window.scrollTo({ top: success.offsetTop - 120, behavior: 'smooth' });
+      }
+    });
   });
 </script>
 

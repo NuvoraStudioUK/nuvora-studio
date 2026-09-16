@@ -65,16 +65,8 @@ body {
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--mid-border);
 }
-.nav-logo {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 500;
-  color: var(--off-white);
-  letter-spacing: 0.02em;
-  text-decoration: none;
-  flex-shrink: 0;
-}
-.nav-logo span { color: var(--gold); }
+.nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+.nav-logo img { height: 36px; width: auto; }
 .nav-links {
   display: flex;
   align-items: center;
@@ -156,7 +148,6 @@ body {
 .hero-bg {
   position: absolute;
   inset: 0;
-  /* Swap for: background-image: url('assets/hero.jpg'); background-size: cover; background-position: center; */
   background: linear-gradient(160deg, #0d0608 0%, #0D0608 45%, #0b0507 100%);
 }
 .hero-bg::before {
@@ -349,12 +340,8 @@ footer {
   padding: 4rem var(--pad-x) 3rem;
   display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem;
 }
-.footer-logo {
-  font-family: var(--font-display); font-size: 1.2rem; font-weight: 500;
-  color: var(--off-white); letter-spacing: 0.02em;
-  text-decoration: none; display: inline-block; margin-bottom: 0.875rem;
-}
-.footer-logo span { color: var(--gold); }
+.footer-logo { display: inline-block; margin-bottom: 0.875rem; text-decoration: none; }
+.footer-logo img { height: 32px; width: auto; }
 .footer-tagline { font-size: 0.8125rem; color: var(--muted); font-weight: 300; line-height: 1.65; max-width: 220px; margin-bottom: 1.5rem; }
 .footer-social { display: flex; gap: 1.25rem; }
 .footer-social a { font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
@@ -406,7 +393,7 @@ footer {
 
 <!-- NAV -->
 <div id="site-nav" class="site-nav">
-  <a href="index.html" class="nav-logo">Nuvora <span>Studio</span></a>
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Nuvora Studio"></a>
   <ul class="nav-links" role="list">
     <li><a href="index.html" class="active" aria-current="page" style="pointer-events:none; color:var(--off-white);">Home</a></li>
     <li><a href="services.html">Services</a></li>
@@ -451,7 +438,7 @@ footer {
     <div class="proof-divider" aria-hidden="true"></div>
     <div class="proof-item">
       <span class="proof-stars" aria-label="Five stars">★★★★★</span>
-      <span class="proof-quote">"Booked them again for our Christmas party."</span>
+      <span class="proof-quote">"Booked them again for our next event."</span>
     </div>
   </div>
 
@@ -497,8 +484,6 @@ footer {
       <span class="event-item">Birthday parties</span>
       <span class="event-item">Corporate events</span>
       <span class="event-item">Proms &amp; graduations</span>
-      <span class="event-item">Christmas parties</span>
-      <span class="event-item">Brand activations</span>
     </div>
   </div>
 
@@ -565,7 +550,7 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div>
-    <a href="index.html" class="footer-logo">Nuvora <span>Studio</span></a>
+    <a href="index.html" class="footer-logo"><img src="images/logo.png" alt="Nuvora Studio"></a>
     <p class="footer-tagline">Premium event experiences for weddings, parties and corporate events across Manchester and the UK.</p>
     <div class="footer-social">
       <a href="https://instagram.com/nuvorastudiouk" target="_blank" rel="noopener">Instagram</a>

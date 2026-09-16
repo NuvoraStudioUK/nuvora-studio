@@ -58,8 +58,8 @@ body {
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--mid-border);
 }
-.nav-logo { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; color: var(--off-white); letter-spacing: 0.02em; }
-.nav-logo span { color: var(--gold); }
+.nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 36px; width: auto; }
 .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
 .nav-links a { color: var(--muted); font-size: 0.8125rem; font-weight: 400; letter-spacing: 0.04em; transition: color 0.2s; }
 .nav-links a:hover, .nav-links a.active { color: var(--off-white); }
@@ -126,88 +126,36 @@ body {
   overflow: hidden;
   border-bottom: 1px solid var(--mid-border);
 }
-
-.video-section video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Placeholder shown when no video src is set */
+.video-section video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .video-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
   background: #0a0305;
 }
-.video-placeholder-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(168,159,149,0.35);
-}
-.video-placeholder-rule {
-  width: 32px;
-  height: 1px;
-  background: rgba(201,169,110,0.2);
-}
-
-/* Play/pause toggle — sole control */
+.video-placeholder-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(168,159,149,0.35); }
+.video-placeholder-rule { width: 32px; height: 1px; background: rgba(201,169,110,0.2); }
 .video-toggle {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  width: 48px;
-  height: 48px;
+  position: absolute; bottom: 2rem; right: 2rem;
+  width: 48px; height: 48px;
   background: rgba(13,6,8,0.6);
   border: 1px solid rgba(247,244,239,0.2);
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.2s, background 0.2s;
-  z-index: 2;
+  border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.2s, background 0.2s; z-index: 2;
 }
 .video-toggle:hover { border-color: var(--gold); background: rgba(13,6,8,0.85); }
-
-/* Play icon */
-.icon-play {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 7px 0 7px 13px;
-  border-color: transparent transparent transparent var(--off-white);
-  margin-left: 2px;
-}
-/* Pause icon */
-.icon-pause {
-  display: none;
-  gap: 4px;
-}
-.icon-pause span {
-  display: block;
-  width: 3px;
-  height: 14px;
-  background: var(--off-white);
-  border-radius: 1px;
-}
+.icon-play { width: 0; height: 0; border-style: solid; border-width: 7px 0 7px 13px; border-color: transparent transparent transparent var(--off-white); margin-left: 2px; }
+.icon-pause { display: none; gap: 4px; }
+.icon-pause span { display: block; width: 3px; height: 14px; background: var(--off-white); border-radius: 1px; }
 .video-section.playing .icon-play { display: none; }
 .video-section.playing .icon-pause { display: flex; }
 
 /* ── FILTER BAR ── */
 .filter-bar {
-  display: flex;
-  align-items: center;
+  display: flex; align-items: center;
   padding: 0 var(--pad-x);
   border-bottom: 1px solid var(--mid-border);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
 }
 .filter-btn {
   background: none; border: none; border-bottom: 2px solid transparent;
@@ -219,80 +167,35 @@ body {
 .filter-btn:hover { color: var(--off-white); }
 .filter-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
 
-/* ── UNIFIED MASONRY GRID ── */
+/* ── GALLERY ── */
 .gallery-section { padding: 3rem var(--pad-x) 5rem; }
-
-.photo-grid {
-  columns: 3;
-  column-gap: 0.75rem;
-}
+.photo-grid { columns: 3; column-gap: 0.75rem; }
 .photo-item {
-  break-inside: avoid;
-  margin-bottom: 0.75rem;
-  position: relative;
-  overflow: hidden;
-  background: var(--mid);
-  cursor: pointer;
-  display: block;
+  break-inside: avoid; margin-bottom: 0.75rem;
+  position: relative; overflow: hidden;
+  background: var(--mid); cursor: pointer; display: block;
 }
-/* Varied heights for visual rhythm */
 .photo-item:nth-child(5n+1) { height: 380px; }
 .photo-item:nth-child(5n+2) { height: 220px; }
 .photo-item:nth-child(5n+3) { height: 300px; }
 .photo-item:nth-child(5n+4) { height: 260px; }
 .photo-item:nth-child(5n+5) { height: 340px; }
-
-/* Hover overlay showing category label */
 .photo-item-overlay {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(13,6,8,0.75) 0%, transparent 50%);
-  opacity: 0;
-  transition: opacity 0.3s;
-  display: flex;
-  align-items: flex-end;
-  padding: 1.25rem;
+  opacity: 0; transition: opacity 0.3s;
+  display: flex; align-items: flex-end; padding: 1.25rem;
 }
 .photo-item:hover .photo-item-overlay { opacity: 1; }
-.photo-item-label {
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-
-.photo-placeholder {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
-}
-.placeholder-inner {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
+.photo-item-label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+.photo-placeholder { width: 100%; height: 100%; position: absolute; inset: 0; }
+.placeholder-inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; }
 .placeholder-line { width: 20px; height: 1px; background: rgba(201,169,110,0.25); }
 .placeholder-text { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(168,159,149,0.3); }
-
-/* Real images */
 .photo-item img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
 .photo-item:hover img { transform: scale(1.04); }
-
-/* Hidden items when filtered */
 .photo-item.hidden { display: none; }
-
-/* Social nudge */
-.social-nudge {
-  text-align: center;
-  padding: 3rem 0 1rem;
-  border-top: 1px solid var(--mid-border);
-  margin-top: 1rem;
-}
+.social-nudge { text-align: center; padding: 3rem 0 1rem; border-top: 1px solid var(--mid-border); margin-top: 1rem; }
 .social-nudge p { font-size: 0.875rem; font-weight: 300; color: var(--muted); margin-bottom: 1rem; }
 .social-nudge-links { display: flex; justify-content: center; gap: 1.5rem; }
 .social-nudge-links a { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; border-bottom: 1px solid transparent; padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
@@ -300,18 +203,12 @@ body {
 
 /* ── CTA ── */
 .cta-section {
-  padding: 8rem var(--pad-x);
-  background: var(--mid);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
+  padding: 8rem var(--pad-x); background: var(--mid);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+  align-items: center; position: relative; overflow: hidden;
 }
 .cta-section::before {
-  content: '';
-  position: absolute; inset: 0;
+  content: ''; position: absolute; inset: 0;
   background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,169,110,0.05) 0%, transparent 70%);
   pointer-events: none;
 }
@@ -330,8 +227,8 @@ footer {
   padding: 4rem var(--pad-x) 3rem;
   display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem;
 }
-.footer-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--off-white); letter-spacing: 0.02em; display: inline-block; margin-bottom: 0.875rem; }
-.footer-logo span { color: var(--gold); }
+.footer-logo { display: inline-block; margin-bottom: 0.875rem; }
+.footer-logo img { height: 32px; width: auto; }
 .footer-tagline { font-size: 0.8125rem; color: var(--muted); font-weight: 300; line-height: 1.65; max-width: 220px; margin-bottom: 1.5rem; }
 .footer-social { display: flex; gap: 1.25rem; }
 .footer-social a { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; transition: color 0.2s; }
@@ -375,7 +272,7 @@ footer {
 
 <!-- NAV -->
 <div id="site-nav" class="site-nav">
-  <a href="./" class="nav-logo">Nuvora <span>Studio</span></a>
+  <a href="./" class="nav-logo"><img src="images/logo.png" alt="Nuvora Studio"></a>
   <ul class="nav-links" role="list">
     <li><a href="./">Home</a></li>
     <li><a href="services.html">Services</a></li>
@@ -403,18 +300,11 @@ footer {
 
   <!-- VIDEO -->
   <div class="video-section" id="videoSection">
-    <!--
-      To add your video:
-      Replace the placeholder div below with:
-      <video id="heroVideo" autoplay muted loop playsinline src="assets/nuvora-reel.mp4"></video>
-      Then remove the .video-placeholder div entirely.
-    -->
     <div class="video-placeholder">
       <div class="video-placeholder-rule"></div>
       <p class="video-placeholder-label">Video reel — coming soon</p>
       <div class="video-placeholder-rule"></div>
     </div>
-
     <button class="video-toggle" id="videoToggle" aria-label="Play video">
       <div class="icon-play" aria-hidden="true"></div>
       <div class="icon-pause" aria-hidden="true"><span></span><span></span></div>
@@ -429,67 +319,21 @@ footer {
     <button class="filter-btn" data-filter="parties">Parties &amp; Proms</button>
   </div>
 
-  <!-- UNIFIED GALLERY GRID -->
-  <!-- 
-    To add photos: replace each .photo-item's inner div with:
-    <img src="assets/photo.jpg" alt="Description">
-    Keep the data-category attribute on .photo-item for filtering to work.
-    Add or remove .photo-item blocks as needed.
-  -->
   <div class="gallery-section">
     <div class="photo-grid" id="photoGrid">
-
-      <div class="photo-item" data-category="weddings">
-        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div>
-        <div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div>
-      </div>
-      <div class="photo-item" data-category="parties">
-        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Party</p></div></div>
-        <div class="photo-item-overlay"><span class="photo-item-label">Party</span></div>
-      </div>
-      <div class="photo-item" data-category="corporate">
-        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Corporate</p></div></div>
-        <div class="photo-item-overlay"><span class="photo-item-label">Corporate</span></div>
-      </div>
-      <div class="photo-item" data-category="weddings">
-        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div>
-        <div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div>
-      </div>
-      <div class="photo-item" data-category="parties">
-        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Prom</p></div></div>
-        <div class="photo-item-overlay"><span class="photo-item-label">Prom</span></div>
-      </div>
-      <div class="photo-item" data-category="weddings">
-        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div>
-        <div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div>
-      </div>
-      <div class="photo-item" data-category="corporate">
-        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Corporate</p></div></div>
-        <div class="photo-item-overlay"><span class="photo-item-label">Corporate</span></div>
-      </div>
-      <div class="photo-item" data-category="parties">
-        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Birthday</p></div></div>
-        <div class="photo-item-overlay"><span class="photo-item-label">Birthday</span></div>
-      </div>
-      <div class="photo-item" data-category="weddings">
-        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div>
-        <div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div>
-      </div>
-      <div class="photo-item" data-category="corporate">
-        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Corporate</p></div></div>
-        <div class="photo-item-overlay"><span class="photo-item-label">Corporate</span></div>
-      </div>
-      <div class="photo-item" data-category="parties">
-        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Party</p></div></div>
-        <div class="photo-item-overlay"><span class="photo-item-label">Party</span></div>
-      </div>
-      <div class="photo-item" data-category="weddings">
-        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div>
-        <div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div>
-      </div>
-
+      <div class="photo-item" data-category="weddings"><div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div><div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div></div>
+      <div class="photo-item" data-category="parties"><div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Party</p></div></div><div class="photo-item-overlay"><span class="photo-item-label">Party</span></div></div>
+      <div class="photo-item" data-category="corporate"><div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Corporate</p></div></div><div class="photo-item-overlay"><span class="photo-item-label">Corporate</span></div></div>
+      <div class="photo-item" data-category="weddings"><div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div><div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div></div>
+      <div class="photo-item" data-category="parties"><div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Prom</p></div></div><div class="photo-item-overlay"><span class="photo-item-label">Prom</span></div></div>
+      <div class="photo-item" data-category="weddings"><div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div><div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div></div>
+      <div class="photo-item" data-category="corporate"><div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Corporate</p></div></div><div class="photo-item-overlay"><span class="photo-item-label">Corporate</span></div></div>
+      <div class="photo-item" data-category="parties"><div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Birthday</p></div></div><div class="photo-item-overlay"><span class="photo-item-label">Birthday</span></div></div>
+      <div class="photo-item" data-category="weddings"><div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div><div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div></div>
+      <div class="photo-item" data-category="corporate"><div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Corporate</p></div></div><div class="photo-item-overlay"><span class="photo-item-label">Corporate</span></div></div>
+      <div class="photo-item" data-category="parties"><div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Party</p></div></div><div class="photo-item-overlay"><span class="photo-item-label">Party</span></div></div>
+      <div class="photo-item" data-category="weddings"><div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div><div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div></div>
     </div>
-
     <div class="social-nudge">
       <p>More arriving soon — follow us for behind-the-scenes content</p>
       <div class="social-nudge-links">
@@ -521,7 +365,7 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div>
-    <a href="./" class="footer-logo">Nuvora <span>Studio</span></a>
+    <a href="./" class="footer-logo"><img src="images/logo.png" alt="Nuvora Studio"></a>
     <p class="footer-tagline">Premium event experiences for weddings, parties and corporate events across Manchester and the UK.</p>
     <div class="footer-social">
       <a href="https://instagram.com/nuvorastudiouk" target="_blank" rel="noopener">Instagram</a>
@@ -552,13 +396,11 @@ footer {
 </div>
 
 <script>
-  /* Nav scroll */
   const nav = document.getElementById('site-nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 
-  /* Video toggle */
   const videoSection = document.getElementById('videoSection');
   const videoToggle  = document.getElementById('videoToggle');
   const video        = document.getElementById('heroVideo');
@@ -566,7 +408,6 @@ footer {
   if (video) {
     videoToggle.setAttribute('aria-label', 'Pause video');
     videoSection.classList.add('playing');
-
     videoToggle.addEventListener('click', () => {
       if (video.paused) {
         video.play();
@@ -580,7 +421,6 @@ footer {
     });
   }
 
-  /* Gallery filter */
   const filterBtns = document.querySelectorAll('.filter-btn');
   const photoItems = document.querySelectorAll('.photo-item');
 
@@ -588,7 +428,6 @@ footer {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
       const filter = btn.dataset.filter;
       photoItems.forEach(item => {
         if (filter === 'all' || item.dataset.category === filter) {

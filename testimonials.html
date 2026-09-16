@@ -58,8 +58,8 @@ body {
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--mid-border);
 }
-.nav-logo { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; color: var(--off-white); letter-spacing: 0.02em; }
-.nav-logo span { color: var(--gold); }
+.nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 36px; width: auto; }
 .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
 .nav-links a { color: var(--muted); font-size: 0.8125rem; font-weight: 400; letter-spacing: 0.04em; transition: color 0.2s; }
 .nav-links a:hover { color: var(--off-white); }
@@ -97,19 +97,12 @@ body {
 /* ── PAGE INTRO ── */
 .page-intro {
   min-height: 55vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  display: flex; flex-direction: column; justify-content: flex-end;
   padding: 10rem var(--pad-x) 4rem;
   border-bottom: 1px solid var(--mid-border);
 }
 .intro-eyebrow { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
-.intro-heading {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  font-weight: 400; line-height: 1.05;
-  color: var(--off-white); margin-bottom: 2.5rem;
-}
+.intro-heading { font-family: var(--font-display); font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 400; line-height: 1.05; color: var(--off-white); margin-bottom: 2.5rem; }
 .intro-heading em { font-style: italic; color: var(--gold-light); }
 .intro-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 3rem; }
 .intro-body { font-size: 0.9375rem; font-weight: 300; color: var(--muted); line-height: 1.8; max-width: 480px; }
@@ -118,179 +111,48 @@ body {
 .intro-rating-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; }
 
 /* ── FEATURED QUOTE ── */
-.featured-quote {
-  padding: 6rem var(--pad-x);
-  border-bottom: 1px solid var(--mid-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.featured-quote-inner {
-  max-width: 780px;
-  text-align: center;
-}
-.featured-quote-text {
-  font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--off-white);
-  line-height: 1.35;
-  margin-bottom: 2rem;
-}
+.featured-quote { padding: 6rem var(--pad-x); border-bottom: 1px solid var(--mid-border); display: flex; align-items: center; justify-content: center; }
+.featured-quote-inner { max-width: 780px; text-align: center; }
+.featured-quote-text { font-family: var(--font-display); font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-style: italic; font-weight: 400; color: var(--off-white); line-height: 1.35; margin-bottom: 2rem; }
 .featured-quote-text::before { content: '\201C'; color: var(--gold); }
 .featured-quote-text::after  { content: '\201D'; color: var(--gold); }
-.featured-quote-attr {
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.featured-quote-rule {
-  width: 32px;
-  height: 1px;
-  background: var(--gold);
-  margin: 0 auto 1rem;
-  opacity: 0.5;
-}
+.featured-quote-attr { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.featured-quote-rule { width: 32px; height: 1px; background: var(--gold); margin: 0 auto 1rem; opacity: 0.5; }
 
 /* ── REVIEWS GRID ── */
-.reviews-section {
-  padding: 5rem var(--pad-x);
-  border-bottom: 1px solid var(--mid-border);
-}
-.reviews-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 3rem;
-}
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--mid-border);
-  border: 1px solid var(--mid-border);
-}
-.review-card {
-  background: var(--black);
-  padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
+.reviews-section { padding: 5rem var(--pad-x); border-bottom: 1px solid var(--mid-border); }
+.reviews-label { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 3rem; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--mid-border); border: 1px solid var(--mid-border); }
+.review-card { background: var(--black); padding: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
 .review-stars { color: var(--gold); font-size: 0.75rem; letter-spacing: 0.15em; }
-.review-quote {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--off-white);
-  line-height: 1.65;
-  flex: 1;
-}
+.review-quote { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; font-weight: 400; color: var(--off-white); line-height: 1.65; flex: 1; }
 .review-rule { width: 24px; height: 1px; background: rgba(201,169,110,0.35); }
-.review-attr {
-  font-size: 0.775rem;
-  font-weight: 300;
-  color: var(--muted);
-  line-height: 1.5;
-}
-.review-attr strong {
-  display: block;
-  color: var(--off-white);
-  font-weight: 400;
-  margin-bottom: 0.2rem;
-}
+.review-attr { font-size: 0.775rem; font-weight: 300; color: var(--muted); line-height: 1.5; }
+.review-attr strong { display: block; color: var(--off-white); font-weight: 400; margin-bottom: 0.2rem; }
 
 /* ── STATS STRIP ── */
-.stats-strip {
-  background: var(--mid);
-  padding: 4rem var(--pad-x);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  border-bottom: 1px solid var(--mid-border);
-}
-.stat-item {
-  padding: 0 2rem;
-  border-right: 1px solid var(--mid-border);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
+.stats-strip { background: var(--mid); padding: 4rem var(--pad-x); display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-bottom: 1px solid var(--mid-border); }
+.stat-item { padding: 0 2rem; border-right: 1px solid var(--mid-border); display: flex; flex-direction: column; gap: 0.5rem; }
 .stat-item:first-child { padding-left: 0; }
 .stat-item:last-child { border-right: none; }
-.stat-num {
-  font-family: var(--font-display);
-  font-size: 3rem;
-  font-weight: 400;
-  color: var(--gold);
-  line-height: 1;
-}
-.stat-label {
-  font-size: 0.8rem;
-  font-weight: 300;
-  color: var(--muted);
-  line-height: 1.5;
-}
+.stat-num { font-family: var(--font-display); font-size: 3rem; font-weight: 400; color: var(--gold); line-height: 1; }
+.stat-label { font-size: 0.8rem; font-weight: 300; color: var(--muted); line-height: 1.5; }
 
 /* ── LEAVE A REVIEW ── */
-.review-cta {
-  padding: 6rem var(--pad-x);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-  border-bottom: 1px solid var(--mid-border);
-}
+.review-cta { padding: 6rem var(--pad-x); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; border-bottom: 1px solid var(--mid-border); }
 .review-cta-eyebrow { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-.review-cta-heading {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 3.25rem);
-  font-weight: 400;
-  color: var(--off-white);
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-}
+.review-cta-heading { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3.25rem); font-weight: 400; color: var(--off-white); line-height: 1.1; margin-bottom: 1.5rem; }
 .review-cta-heading em { font-style: italic; color: var(--gold-light); }
 .review-cta-body { font-size: 0.9375rem; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
-.review-cta-right {
-  padding-left: 3rem;
-  border-left: 1px solid var(--mid-border);
-}
+.review-cta-right { padding-left: 3rem; border-left: 1px solid var(--mid-border); }
 .review-process { display: flex; flex-direction: column; gap: 1.5rem; }
 .process-item { display: flex; align-items: flex-start; gap: 1.25rem; }
-.process-num {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: var(--gold);
-  opacity: 0.5;
-  line-height: 1;
-  flex-shrink: 0;
-  width: 2rem;
-}
+.process-num { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; color: var(--gold); opacity: 0.5; line-height: 1; flex-shrink: 0; width: 2rem; }
 .process-text { font-size: 0.875rem; font-weight: 300; color: var(--muted); line-height: 1.6; padding-top: 0.1rem; }
 
 /* ── CTA BANNER ── */
-.cta-section {
-  padding: 8rem var(--pad-x);
-  background: var(--mid);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-.cta-section::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 60% 80% at 20% 50%, rgba(201,169,110,0.05) 0%, transparent 70%);
-  pointer-events: none;
-}
+.cta-section { padding: 8rem var(--pad-x); background: var(--mid); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 20% 50%, rgba(201,169,110,0.05) 0%, transparent 70%); pointer-events: none; }
 .cta-eyebrow { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
 .cta-heading { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 400; color: var(--off-white); line-height: 1.1; margin-bottom: 1.5rem; }
 .cta-heading em { font-style: italic; color: var(--gold-light); }
@@ -301,13 +163,9 @@ body {
 .cta-quote-attr { font-size: 0.75rem; color: var(--muted); margin-top: 1rem; padding-left: 1.5rem; letter-spacing: 0.04em; }
 
 /* ── FOOTER ── */
-footer {
-  background: var(--black); border-top: 1px solid var(--mid-border);
-  padding: 4rem var(--pad-x) 3rem;
-  display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem;
-}
-.footer-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--off-white); letter-spacing: 0.02em; display: inline-block; margin-bottom: 0.875rem; }
-.footer-logo span { color: var(--gold); }
+footer { background: var(--black); border-top: 1px solid var(--mid-border); padding: 4rem var(--pad-x) 3rem; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; }
+.footer-logo { display: inline-block; margin-bottom: 0.875rem; }
+.footer-logo img { height: 32px; width: auto; }
 .footer-tagline { font-size: 0.8125rem; color: var(--muted); font-weight: 300; line-height: 1.65; max-width: 220px; margin-bottom: 1.5rem; }
 .footer-social { display: flex; gap: 1.25rem; }
 .footer-social a { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; transition: color 0.2s; }
@@ -319,11 +177,7 @@ footer {
 .footer-contact-item { font-size: 0.875rem; font-weight: 300; color: var(--muted); margin-bottom: 0.625rem; }
 .footer-contact-item a { color: inherit; transition: color 0.2s; }
 .footer-contact-item a:hover { color: var(--off-white); }
-.footer-bottom {
-  background: var(--black); border-top: 1px solid rgba(247,244,239,0.05);
-  padding: 1.25rem var(--pad-x);
-  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-}
+.footer-bottom { background: var(--black); border-top: 1px solid rgba(247,244,239,0.05); padding: 1.25rem var(--pad-x); display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .footer-legal { font-size: 0.75rem; font-weight: 300; color: rgba(168,159,149,0.4); }
 
 /* ── RESPONSIVE ── */
@@ -353,7 +207,7 @@ footer {
 
 <!-- NAV -->
 <div id="site-nav" class="site-nav">
-  <a href="./" class="nav-logo">Nuvora <span>Studio</span></a>
+  <a href="./" class="nav-logo"><img src="images/logo.png" alt="Nuvora Studio"></a>
   <ul class="nav-links" role="list">
     <li><a href="./">Home</a></li>
     <li><a href="services.html">Services</a></li>
@@ -392,28 +246,24 @@ footer {
   <section class="reviews-section">
     <p class="reviews-label">What our clients say</p>
     <div class="reviews-grid">
-
       <div class="review-card">
         <p class="review-stars">★★★★★</p>
         <p class="review-quote">The booth was an absolute hit — our guests were queuing up all night. The prints came out beautifully and the attendant was brilliant. We'd book Nuvora Studio again in a heartbeat.</p>
         <div class="review-rule"></div>
         <p class="review-attr"><strong>Sarah &amp; James</strong>Wedding reception, Manchester</p>
       </div>
-
       <div class="review-card">
         <p class="review-stars">★★★★★</p>
         <p class="review-quote">We hired Nuvora Studio for our company's end-of-year party and they were completely professional from start to finish. Easy to communicate with, arrived on time, and the quality of the photos was stunning.</p>
         <div class="review-rule"></div>
         <p class="review-attr"><strong>HR Manager</strong>Corporate event, Salford</p>
       </div>
-
       <div class="review-card">
         <p class="review-stars">★★★★★</p>
         <p class="review-quote">Honestly the best thing about the whole party. Everyone took their prints home and people are still talking about it. Worth every penny.</p>
         <div class="review-rule"></div>
         <p class="review-attr"><strong>Aisha</strong>30th birthday party, Manchester</p>
       </div>
-
     </div>
   </section>
 
@@ -447,22 +297,10 @@ footer {
     </div>
     <div class="review-cta-right">
       <div class="review-process">
-        <div class="process-item">
-          <span class="process-num">1</span>
-          <p class="process-text">Click the button and sign in to your Google account</p>
-        </div>
-        <div class="process-item">
-          <span class="process-num">2</span>
-          <p class="process-text">Select your star rating — five stars if we earned it</p>
-        </div>
-        <div class="process-item">
-          <span class="process-num">3</span>
-          <p class="process-text">Share a few words about your evening with us</p>
-        </div>
-        <div class="process-item">
-          <span class="process-num">4</span>
-          <p class="process-text">Your review helps other couples and families find us</p>
-        </div>
+        <div class="process-item"><span class="process-num">1</span><p class="process-text">Click the button and sign in to your Google account</p></div>
+        <div class="process-item"><span class="process-num">2</span><p class="process-text">Select your star rating — five stars if we earned it</p></div>
+        <div class="process-item"><span class="process-num">3</span><p class="process-text">Share a few words about your evening with us</p></div>
+        <div class="process-item"><span class="process-num">4</span><p class="process-text">Your review helps other couples and families find us</p></div>
       </div>
     </div>
   </section>
@@ -489,7 +327,7 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div>
-    <a href="./" class="footer-logo">Nuvora <span>Studio</span></a>
+    <a href="./" class="footer-logo"><img src="images/logo.png" alt="Nuvora Studio"></a>
     <p class="footer-tagline">Premium event experiences for weddings, parties and corporate events across Manchester and the UK.</p>
     <div class="footer-social">
       <a href="https://instagram.com/nuvorastudiouk" target="_blank" rel="noopener">Instagram</a>

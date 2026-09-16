@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work | Nuvora Studio Manchester</title>
+<meta name="description" content="Browse our portfolio of weddings, corporate events and celebrations across Manchester. Premium event experiences delivered by Nuvora Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --black:      #0D0608;
+  --mid:        #2A2A2A;
+  --mid-border: rgba(247,244,239,0.08);
+  --off-white:  #F7F4EF;
+  --muted:      #A89F95;
+  --gold:       #C9A96E;
+  --gold-light: #DFC08A;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --pad-x: 4rem;
+  --radius: 2px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+a { color: inherit; text-decoration: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  background: var(--black);
+  color: var(--off-white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem var(--pad-x);
+  transition: background 0.4s, backdrop-filter 0.4s;
+}
+.site-nav.scrolled {
+  background: rgba(13,6,8,0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--mid-border);
+}
+.nav-logo { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; color: var(--off-white); letter-spacing: 0.02em; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+.nav-links a { color: var(--muted); font-size: 0.8125rem; font-weight: 400; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--off-white); }
+.nav-links a.active { pointer-events: none; cursor: default; }
+.nav-cta { color: var(--off-white) !important; border: 1px solid rgba(247,244,239,0.3); padding: 0.5rem 1.25rem; border-radius: var(--radius); font-weight: 500 !important; transition: border-color 0.2s, color 0.2s !important; }
+.nav-cta:hover { border-color: var(--gold) !important; color: var(--gold) !important; }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block; background: var(--gold); color: var(--black);
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.9rem 2.25rem; border-radius: var(--radius); transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--gold-light); }
+.btn-outline {
+  display: inline-block; color: var(--off-white);
+  font-size: 0.8rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.875rem 2.25rem; border-radius: var(--radius);
+  border: 1px solid rgba(247,244,239,0.25); transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── PAGE INTRO ── */
+.page-intro {
+  min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10rem var(--pad-x) 4rem;
+  border-bottom: 1px solid var(--mid-border);
+}
+.intro-eyebrow { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.intro-heading {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 400; line-height: 1.05;
+  color: var(--off-white); margin-bottom: 2.5rem;
+}
+.intro-heading em { font-style: italic; color: var(--gold-light); }
+.intro-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 3rem; }
+.intro-body { font-size: 0.9375rem; font-weight: 300; color: var(--muted); line-height: 1.8; max-width: 520px; }
+.intro-social { display: flex; gap: 1.25rem; flex-shrink: 0; padding-bottom: 0.125rem; }
+.intro-social a { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; border-bottom: 1px solid transparent; padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
+.intro-social a:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── VIDEO SECTION ── */
+.video-section {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0a0305;
+  overflow: hidden;
+  border-bottom: 1px solid var(--mid-border);
+}
+
+.video-section video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Placeholder shown when no video src is set */
+.video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: #0a0305;
+}
+.video-placeholder-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(168,159,149,0.35);
+}
+.video-placeholder-rule {
+  width: 32px;
+  height: 1px;
+  background: rgba(201,169,110,0.2);
+}
+
+/* Play/pause toggle — sole control */
+.video-toggle {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  background: rgba(13,6,8,0.6);
+  border: 1px solid rgba(247,244,239,0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+  z-index: 2;
+}
+.video-toggle:hover { border-color: var(--gold); background: rgba(13,6,8,0.85); }
+
+/* Play icon */
+.icon-play {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7px 0 7px 13px;
+  border-color: transparent transparent transparent var(--off-white);
+  margin-left: 2px;
+}
+/* Pause icon */
+.icon-pause {
+  display: none;
+  gap: 4px;
+}
+.icon-pause span {
+  display: block;
+  width: 3px;
+  height: 14px;
+  background: var(--off-white);
+  border-radius: 1px;
+}
+.video-section.playing .icon-play { display: none; }
+.video-section.playing .icon-pause { display: flex; }
+
+/* ── FILTER BAR ── */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--pad-x);
+  border-bottom: 1px solid var(--mid-border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.filter-btn {
+  background: none; border: none; border-bottom: 2px solid transparent;
+  cursor: pointer; font-family: var(--font-body);
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); padding: 1.25rem 1.5rem;
+  transition: color 0.2s, border-color 0.2s; white-space: nowrap; margin-bottom: -1px;
+}
+.filter-btn:hover { color: var(--off-white); }
+.filter-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ── UNIFIED MASONRY GRID ── */
+.gallery-section { padding: 3rem var(--pad-x) 5rem; }
+
+.photo-grid {
+  columns: 3;
+  column-gap: 0.75rem;
+}
+.photo-item {
+  break-inside: avoid;
+  margin-bottom: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--mid);
+  cursor: pointer;
+}
+/* Varied heights for visual rhythm */
+.photo-item:nth-child(5n+1) .photo-placeholder { padding-bottom: 130%; }
+.photo-item:nth-child(5n+2) .photo-placeholder { padding-bottom: 75%; }
+.photo-item:nth-child(5n+3) .photo-placeholder { padding-bottom: 100%; }
+.photo-item:nth-child(5n+4) .photo-placeholder { padding-bottom: 85%; }
+.photo-item:nth-child(5n+5) .photo-placeholder { padding-bottom: 115%; }
+
+/* Hover overlay showing category label */
+.photo-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,6,8,0.75) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.25rem;
+}
+.photo-item:hover .photo-item-overlay { opacity: 1; }
+.photo-item-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.photo-placeholder {
+  width: 100%;
+  position: relative;
+}
+.placeholder-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.placeholder-line { width: 20px; height: 1px; background: rgba(201,169,110,0.25); }
+.placeholder-text { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(168,159,149,0.3); }
+
+/* Real images */
+.photo-item img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
+.photo-item:hover img { transform: scale(1.04); }
+
+/* Hidden items when filtered */
+.photo-item.hidden { display: none; }
+
+/* Social nudge */
+.social-nudge {
+  text-align: center;
+  padding: 3rem 0 1rem;
+  border-top: 1px solid var(--mid-border);
+  margin-top: 1rem;
+}
+.social-nudge p { font-size: 0.875rem; font-weight: 300; color: var(--muted); margin-bottom: 1rem; }
+.social-nudge-links { display: flex; justify-content: center; gap: 1.5rem; }
+.social-nudge-links a { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; border-bottom: 1px solid transparent; padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
+.social-nudge-links a:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── CTA ── */
+.cta-section {
+  padding: 8rem var(--pad-x);
+  background: var(--mid);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,169,110,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-eyebrow { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.cta-heading { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 400; color: var(--off-white); line-height: 1.1; margin-bottom: 1.5rem; }
+.cta-heading em { font-style: italic; color: var(--gold-light); }
+.cta-body { font-size: 0.9375rem; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 2.5rem; }
+.cta-actions { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.cta-right { position: relative; z-index: 1; }
+.cta-quote { font-family: var(--font-display); font-size: clamp(1.1rem, 2vw, 1.4rem); font-style: italic; color: var(--off-white); line-height: 1.6; opacity: 0.7; padding-left: 1.5rem; border-left: 1px solid rgba(201,169,110,0.4); }
+.cta-quote-attr { font-size: 0.75rem; color: var(--muted); margin-top: 1rem; padding-left: 1.5rem; letter-spacing: 0.04em; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black); border-top: 1px solid var(--mid-border);
+  padding: 4rem var(--pad-x) 3rem;
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem;
+}
+.footer-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--off-white); letter-spacing: 0.02em; display: inline-block; margin-bottom: 0.875rem; }
+.footer-logo span { color: var(--gold); }
+.footer-tagline { font-size: 0.8125rem; color: var(--muted); font-weight: 300; line-height: 1.65; max-width: 220px; margin-bottom: 1.5rem; }
+.footer-social { display: flex; gap: 1.25rem; }
+.footer-social a { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; transition: color 0.2s; }
+.footer-social a:hover { color: var(--gold); }
+.footer-col-title { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+.footer-links a { font-size: 0.875rem; font-weight: 300; color: var(--muted); transition: color 0.2s; }
+.footer-links a:hover { color: var(--off-white); }
+.footer-contact-item { font-size: 0.875rem; font-weight: 300; color: var(--muted); margin-bottom: 0.625rem; }
+.footer-contact-item a { color: inherit; transition: color 0.2s; }
+.footer-contact-item a:hover { color: var(--off-white); }
+.footer-bottom {
+  background: var(--black); border-top: 1px solid rgba(247,244,239,0.05);
+  padding: 1.25rem var(--pad-x);
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.footer-legal { font-size: 0.75rem; font-weight: 300; color: rgba(168,159,149,0.4); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  :root { --pad-x: 2.5rem; }
+  .photo-grid { columns: 2; }
+  .cta-section { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 768px) {
+  :root { --pad-x: 1.5rem; }
+  .nav-links { display: none; }
+  .page-intro { min-height: auto; padding-top: 8rem; }
+  .intro-footer { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .photo-grid { columns: 2; column-gap: 0.5rem; }
+  .video-section { aspect-ratio: 9 / 16; }
+  footer { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+@media (max-width: 480px) {
+  .photo-grid { columns: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div id="site-nav" class="site-nav">
+  <a href="/" class="nav-logo">Nuvora <span>Studio</span></a>
+  <ul class="nav-links" role="list">
+    <li><a href="/">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html" class="active" aria-current="page">Portfolio</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="contact.html" class="nav-cta">Enquire</a></li>
+  </ul>
+</div>
+
+<main>
+
+  <!-- PAGE INTRO -->
+  <section class="page-intro">
+    <p class="intro-eyebrow">Our work</p>
+    <h1 class="intro-heading">The Experience,<br><em>Up Close</em></h1>
+    <div class="intro-footer">
+      <p class="intro-body">From intimate wedding receptions to grand corporate celebrations, every event we attend becomes part of our growing story. Browse a selection of moments we have had the privilege of capturing across Manchester and beyond.</p>
+      <div class="intro-social">
+        <a href="https://instagram.com/nuvorastudiouk" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://tiktok.com/@nuvorastudiouk" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <div class="video-section" id="videoSection">
+    <!--
+      To add your video:
+      Replace the placeholder div below with:
+      <video id="heroVideo" autoplay muted loop playsinline src="assets/nuvora-reel.mp4"></video>
+      Then remove the .video-placeholder div entirely.
+    -->
+    <div class="video-placeholder">
+      <div class="video-placeholder-rule"></div>
+      <p class="video-placeholder-label">Video reel — coming soon</p>
+      <div class="video-placeholder-rule"></div>
+    </div>
+
+    <button class="video-toggle" id="videoToggle" aria-label="Play video">
+      <div class="icon-play" aria-hidden="true"></div>
+      <div class="icon-pause" aria-hidden="true"><span></span><span></span></div>
+    </button>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="weddings">Weddings</button>
+    <button class="filter-btn" data-filter="corporate">Corporate</button>
+    <button class="filter-btn" data-filter="parties">Parties &amp; Proms</button>
+  </div>
+
+  <!-- UNIFIED GALLERY GRID -->
+  <!-- 
+    To add photos: replace each .photo-item's inner div with:
+    <img src="assets/photo.jpg" alt="Description">
+    Keep the data-category attribute on .photo-item for filtering to work.
+    Add or remove .photo-item blocks as needed.
+  -->
+  <div class="gallery-section">
+    <div class="photo-grid" id="photoGrid">
+
+      <div class="photo-item" data-category="weddings">
+        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div>
+        <div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div>
+      </div>
+      <div class="photo-item" data-category="parties">
+        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Party</p></div></div>
+        <div class="photo-item-overlay"><span class="photo-item-label">Party</span></div>
+      </div>
+      <div class="photo-item" data-category="corporate">
+        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Corporate</p></div></div>
+        <div class="photo-item-overlay"><span class="photo-item-label">Corporate</span></div>
+      </div>
+      <div class="photo-item" data-category="weddings">
+        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div>
+        <div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div>
+      </div>
+      <div class="photo-item" data-category="parties">
+        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Prom</p></div></div>
+        <div class="photo-item-overlay"><span class="photo-item-label">Prom</span></div>
+      </div>
+      <div class="photo-item" data-category="weddings">
+        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div>
+        <div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div>
+      </div>
+      <div class="photo-item" data-category="corporate">
+        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Corporate</p></div></div>
+        <div class="photo-item-overlay"><span class="photo-item-label">Corporate</span></div>
+      </div>
+      <div class="photo-item" data-category="parties">
+        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Birthday</p></div></div>
+        <div class="photo-item-overlay"><span class="photo-item-label">Birthday</span></div>
+      </div>
+      <div class="photo-item" data-category="weddings">
+        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div>
+        <div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div>
+      </div>
+      <div class="photo-item" data-category="corporate">
+        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Corporate</p></div></div>
+        <div class="photo-item-overlay"><span class="photo-item-label">Corporate</span></div>
+      </div>
+      <div class="photo-item" data-category="parties">
+        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Party</p></div></div>
+        <div class="photo-item-overlay"><span class="photo-item-label">Party</span></div>
+      </div>
+      <div class="photo-item" data-category="weddings">
+        <div class="photo-placeholder"><div class="placeholder-inner"><div class="placeholder-line"></div><p class="placeholder-text">Wedding</p></div></div>
+        <div class="photo-item-overlay"><span class="photo-item-label">Wedding</span></div>
+      </div>
+
+    </div>
+
+    <div class="social-nudge">
+      <p>More arriving soon — follow us for behind-the-scenes content</p>
+      <div class="social-nudge-links">
+        <a href="https://instagram.com/nuvorastudiouk" target="_blank" rel="noopener">@nuvorastudiouk on Instagram</a>
+        <a href="https://tiktok.com/@nuvorastudiouk" target="_blank" rel="noopener">@nuvorastudiouk on TikTok</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div>
+      <p class="cta-eyebrow">Ready to create your own moment?</p>
+      <h2 class="cta-heading">Begin Your<br><em>Experience</em></h2>
+      <p class="cta-body">Every great celebration starts with a conversation. Tell us about your event and we will take care of everything else.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-primary">Send Your Enquiry</a>
+        <a href="services.html" class="btn-outline">View packages</a>
+      </div>
+    </div>
+    <div class="cta-right">
+      <p class="cta-quote">"Every single guest loved it. The prints came out beautifully — we'll definitely be booking again."</p>
+      <p class="cta-quote-attr">— Aisha, 30th birthday party, Manchester</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <a href="/" class="footer-logo">Nuvora <span>Studio</span></a>
+    <p class="footer-tagline">Premium event experiences for weddings, parties and corporate events across Manchester and the UK.</p>
+    <div class="footer-social">
+      <a href="https://instagram.com/nuvorastudiouk" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://tiktok.com/@nuvorastudiouk" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+  <div>
+    <p class="footer-col-title">Navigation</p>
+    <ul class="footer-links" role="list">
+      <li><a href="/">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <p class="footer-col-title">Contact</p>
+    <p class="footer-contact-item"><a href="mailto:enquiry@nuvorastudio.co.uk">enquiry@nuvorastudio.co.uk</a></p>
+    <p class="footer-contact-item"><a href="https://instagram.com/nuvorastudiouk" target="_blank" rel="noopener">@nuvorastudiouk</a></p>
+    <p class="footer-contact-item" style="margin-top:1.25rem;">Manchester &amp; UK-wide</p>
+  </div>
+</footer>
+
+<div class="footer-bottom">
+  <p class="footer-legal">© 2026 Nuvora Studio Ltd. Registered in England &amp; Wales.</p>
+  <p class="footer-legal">nuvorastudio.co.uk</p>
+</div>
+
+<script>
+  /* Nav scroll */
+  const nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  /* Video toggle */
+  const videoSection = document.getElementById('videoSection');
+  const videoToggle  = document.getElementById('videoToggle');
+  const video        = document.getElementById('heroVideo');
+
+  if (video) {
+    videoToggle.setAttribute('aria-label', 'Pause video');
+    videoSection.classList.add('playing');
+
+    videoToggle.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        videoSection.classList.add('playing');
+        videoToggle.setAttribute('aria-label', 'Pause video');
+      } else {
+        video.pause();
+        videoSection.classList.remove('playing');
+        videoToggle.setAttribute('aria-label', 'Play video');
+      }
+    });
+  }
+
+  /* Gallery filter */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const photoItems = document.querySelectorAll('.photo-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+      photoItems.forEach(item => {
+        if (filter === 'all' || item.dataset.category === filter) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

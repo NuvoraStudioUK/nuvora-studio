@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Packages & Pricing | Nuvora Studio Manchester</title>
+<meta name="description" content="Silver from £400, Gold from £580, Platinum from £720. All packages include unlimited prints, professional lighting, branded photo strips and a dedicated attendant.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --black:      #0D0608;
+  --mid:        #2A2A2A;
+  --mid-border: rgba(247,244,239,0.08);
+  --off-white:  #F7F4EF;
+  --muted:      #A89F95;
+  --gold:       #C9A96E;
+  --gold-light: #DFC08A;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --pad-x: 4rem;
+  --radius: 2px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+a { color: inherit; text-decoration: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  background: var(--black);
+  color: var(--off-white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem var(--pad-x);
+  transition: background 0.4s, backdrop-filter 0.4s;
+}
+.site-nav.scrolled {
+  background: rgba(13,6,8,0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--mid-border);
+}
+.nav-logo { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; color: var(--off-white); letter-spacing: 0.02em; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+.nav-links a { color: var(--muted); font-size: 0.8125rem; font-weight: 400; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--off-white); }
+.nav-links a.active { pointer-events: none; cursor: default; }
+.nav-cta { color: var(--off-white) !important; border: 1px solid rgba(247,244,239,0.3); padding: 0.5rem 1.25rem; border-radius: var(--radius); font-weight: 500 !important; transition: border-color 0.2s, color 0.2s !important; }
+.nav-cta:hover { border-color: var(--gold) !important; color: var(--gold) !important; }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block; background: var(--gold); color: var(--black);
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.9rem 2.25rem; border-radius: var(--radius); transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--gold-light); }
+.btn-outline {
+  display: inline-block; color: var(--off-white);
+  font-size: 0.8rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.875rem 2.25rem; border-radius: var(--radius);
+  border: 1px solid rgba(247,244,239,0.25); transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── PAGE INTRO ── */
+.page-intro {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10rem var(--pad-x) 5rem;
+  border-bottom: 1px solid var(--mid-border);
+  position: relative;
+}
+.intro-eyebrow {
+  font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.5rem;
+}
+.intro-heading {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--off-white);
+  max-width: 800px;
+  margin-bottom: 3rem;
+}
+.intro-heading em { font-style: italic; color: var(--gold-light); }
+.intro-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3rem;
+}
+.intro-body {
+  font-size: 0.9375rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 480px;
+}
+.intro-stat {
+  text-align: right;
+  flex-shrink: 0;
+}
+.intro-stat-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+}
+.intro-stat-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  margin-top: 0.25rem;
+}
+
+/* ── WHAT'S INCLUDED STRIP ── */
+.included-strip {
+  background: var(--mid);
+  padding: 4rem var(--pad-x);
+  border-bottom: 1px solid var(--mid-border);
+}
+.included-label {
+  font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 2rem;
+}
+.included-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--mid-border);
+}
+.included-item {
+  padding: 1.5rem 1.5rem 1.5rem 0;
+  border-right: 1px solid var(--mid-border);
+  border-bottom: 1px solid var(--mid-border);
+}
+.included-item:nth-child(4n) { border-right: none; padding-right: 0; }
+.included-item:nth-last-child(-n+4) { border-bottom: none; }
+.included-num {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--gold);
+  opacity: 0.6;
+  margin-bottom: 0.5rem;
+}
+.included-text {
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: var(--off-white);
+  line-height: 1.5;
+}
+
+/* ── PACKAGES HEADER ── */
+.packages-header {
+  padding: 5rem var(--pad-x) 3rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  border-bottom: 1px solid var(--mid-border);
+}
+.packages-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 400;
+  color: var(--off-white);
+  line-height: 1.1;
+}
+.packages-heading em { font-style: italic; color: var(--gold-light); }
+.packages-note {
+  font-size: 0.8125rem;
+  font-weight: 300;
+  color: var(--muted);
+  padding-bottom: 0.25rem;
+}
+
+/* ── PACKAGE ROWS ── */
+.package-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  border-bottom: 1px solid var(--mid-border);
+  min-height: 320px;
+}
+.package-row:last-of-type { border-bottom: none; }
+
+.pkg-left {
+  padding: 3.5rem var(--pad-x) 3.5rem 0;
+  border-right: 1px solid var(--mid-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: var(--pad-x);
+}
+.pkg-tier {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+.pkg-name {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--off-white);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.pkg-name em { font-style: italic; color: var(--gold-light); }
+.pkg-duration {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+.pkg-price {
+  font-family: var(--font-display);
+  font-size: 2.75rem;
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+}
+.pkg-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,169,110,0.4);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius);
+  margin-top: 0.75rem;
+  width: fit-content;
+}
+
+.pkg-centre {
+  padding: 3.5rem 3rem;
+  border-right: 1px solid var(--mid-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.pkg-description {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.85;
+  max-width: 480px;
+}
+
+.pkg-includes-title {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.pkg-includes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.pkg-includes-list li {
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: var(--off-white);
+  line-height: 1.4;
+}
+.pkg-includes-list li::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  position: relative;
+  top: -2px;
+}
+
+.pkg-right {
+  padding: 3.5rem var(--pad-x) 3.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+/* ── FLEXIBLE HIRE ── */
+.flexible-section {
+  background: var(--mid);
+  padding: 4rem var(--pad-x);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  border-top: 1px solid var(--mid-border);
+  border-bottom: 1px solid var(--mid-border);
+}
+.flexible-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.flexible-heading {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 400;
+  color: var(--off-white);
+  line-height: 1.1;
+}
+.flexible-heading em { font-style: italic; color: var(--gold-light); }
+.flexible-price {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--gold);
+  font-weight: 400;
+}
+.flexible-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+.flexible-desc {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+/* ── FAQ ACCORDION ── */
+.faq-section {
+  padding: 5rem var(--pad-x);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 6rem;
+  align-items: start;
+  border-bottom: 1px solid var(--mid-border);
+}
+.faq-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400;
+  color: var(--off-white);
+  line-height: 1.1;
+  position: sticky;
+  top: 7rem;
+}
+.faq-heading em { font-style: italic; color: var(--gold-light); }
+.faq-list { display: flex; flex-direction: column; }
+.faq-item { border-top: 1px solid var(--mid-border); }
+.faq-item:last-child { border-bottom: 1px solid var(--mid-border); }
+.faq-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.625rem 0;
+  text-align: left;
+}
+.faq-q {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--off-white);
+  line-height: 1.3;
+  transition: color 0.2s;
+}
+.faq-trigger:hover .faq-q { color: var(--gold-light); }
+.faq-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  position: relative;
+}
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--gold);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.faq-icon::before { width: 12px; height: 1px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.faq-icon::after  { width: 1px; height: 12px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.faq-item.open .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+.faq-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-item.open .faq-body { max-height: 300px; }
+.faq-a {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+  padding-bottom: 1.625rem;
+}
+
+/* ── CLOSING CTA ── */
+.cta-section {
+  padding: 8rem var(--pad-x);
+  background: var(--mid);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,169,110,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-eyebrow { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.cta-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 400;
+  color: var(--off-white);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.cta-heading em { font-style: italic; color: var(--gold-light); }
+.cta-body {
+  font-size: 0.9375rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+.cta-actions { display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; }
+.cta-right { position: relative; z-index: 1; }
+.cta-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-style: italic;
+  color: var(--off-white);
+  line-height: 1.6;
+  opacity: 0.7;
+  padding-left: 1.5rem;
+  border-left: 1px solid rgba(201,169,110,0.4);
+}
+.cta-quote-attr {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black);
+  border-top: 1px solid var(--mid-border);
+  padding: 4rem var(--pad-x) 3rem;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 3rem;
+}
+.footer-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--off-white); letter-spacing: 0.02em; display: inline-block; margin-bottom: 0.875rem; }
+.footer-logo span { color: var(--gold); }
+.footer-tagline { font-size: 0.8125rem; color: var(--muted); font-weight: 300; line-height: 1.65; max-width: 220px; margin-bottom: 1.5rem; }
+.footer-social { display: flex; gap: 1.25rem; }
+.footer-social a { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; transition: color 0.2s; }
+.footer-social a:hover { color: var(--gold); }
+.footer-col-title { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+.footer-links a { font-size: 0.875rem; font-weight: 300; color: var(--muted); transition: color 0.2s; }
+.footer-links a:hover { color: var(--off-white); }
+.footer-contact-item { font-size: 0.875rem; font-weight: 300; color: var(--muted); margin-bottom: 0.625rem; }
+.footer-contact-item a { color: inherit; transition: color 0.2s; }
+.footer-contact-item a:hover { color: var(--off-white); }
+.footer-bottom {
+  background: var(--black); border-top: 1px solid rgba(247,244,239,0.05);
+  padding: 1.25rem var(--pad-x);
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.footer-legal { font-size: 0.75rem; font-weight: 300; color: rgba(168,159,149,0.4); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  :root { --pad-x: 2.5rem; }
+  .package-row { grid-template-columns: 1fr 1fr; }
+  .pkg-right { border-top: 1px solid var(--mid-border); grid-column: 1 / -1; padding: 2rem var(--pad-x); flex-direction: row; align-items: center; justify-content: flex-start; }
+  .included-grid { grid-template-columns: repeat(2, 1fr); }
+  .included-item:nth-child(2n) { border-right: none; }
+  .included-item:nth-child(4n) { border-right: 1px solid var(--mid-border); }
+  .included-item:nth-last-child(-n+2) { border-bottom: none; }
+  .included-item:nth-last-child(-n+4) { border-bottom: 1px solid var(--mid-border); }
+  .flexible-section { grid-template-columns: 1fr 1fr; }
+  .cta-section { grid-template-columns: 1fr; gap: 3rem; }
+  .faq-section { grid-template-columns: 1fr; gap: 2.5rem; }
+  .faq-heading { position: static; }
+}
+@media (max-width: 768px) {
+  :root { --pad-x: 1.5rem; }
+  .nav-links { display: none; }
+  .page-intro { min-height: auto; padding-top: 8rem; }
+  .intro-footer { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .intro-stat { text-align: left; }
+  .package-row { grid-template-columns: 1fr; }
+  .pkg-left { border-right: none; border-bottom: 1px solid var(--mid-border); padding: 2.5rem var(--pad-x); }
+  .pkg-centre { border-right: none; padding: 2.5rem var(--pad-x); }
+  .pkg-right { padding: 1.5rem var(--pad-x) 2.5rem; }
+  .included-grid { grid-template-columns: 1fr; }
+  .included-item { border-right: none !important; padding-right: 0; }
+  .included-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--mid-border) !important; }
+  .included-item:last-child { border-bottom: none !important; }
+  .flexible-section { grid-template-columns: 1fr; gap: 1.5rem; }
+  .packages-header { flex-direction: column; align-items: flex-start; }
+  footer { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div id="site-nav" class="site-nav">
+  <a href="/" class="nav-logo">Nuvora <span>Studio</span></a>
+  <ul class="nav-links" role="list">
+    <li><a href="/">Home</a></li>
+    <li><a href="services.html" class="active" aria-current="page">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="contact.html" class="nav-cta">Enquire</a></li>
+  </ul>
+</div>
+
+<main>
+
+  <!-- PAGE INTRO -->
+  <section class="page-intro">
+    <p class="intro-eyebrow">Our packages</p>
+    <h1 class="intro-heading">Every Event,<br><em>Elevated</em></h1>
+    <div class="intro-footer">
+      <p class="intro-body">At Nuvora Studio we bring a premium event experience to every occasion we attend. From intimate weddings to large corporate gatherings, our elegant wooden booth and professional setup ensure your guests leave with memories they will treasure forever. Based in Manchester, serving events across the UK.</p>
+      <div class="intro-stat">
+        <div class="intro-stat-num">3</div>
+        <div class="intro-stat-label">packages, one standard of excellence</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="included-strip">
+    <p class="included-label">Included in every booking</p>
+    <div class="included-grid">
+      <div class="included-item">
+        <p class="included-num">01</p>
+        <p class="included-text">Sony A7S II mirrorless camera</p>
+      </div>
+      <div class="included-item">
+        <p class="included-num">02</p>
+        <p class="included-text">Studio flash with beauty dish</p>
+      </div>
+      <div class="included-item">
+        <p class="included-num">03</p>
+        <p class="included-text">DNP DS-RX1HS dye-sublimation printer</p>
+      </div>
+      <div class="included-item">
+        <p class="included-num">04</p>
+        <p class="included-text">Unlimited 6×4 instant prints</p>
+      </div>
+      <div class="included-item">
+        <p class="included-num">05</p>
+        <p class="included-text">Digital gallery delivered after the event</p>
+      </div>
+      <div class="included-item">
+        <p class="included-num">06</p>
+        <p class="included-text">Dedicated on-site attendant throughout</p>
+      </div>
+      <div class="included-item">
+        <p class="included-num">07</p>
+        <p class="included-text">Delivery, setup and collection included</p>
+      </div>
+      <div class="included-item">
+        <p class="included-num">08</p>
+        <p class="included-text">Custom print design with your names &amp; date</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES HEADER -->
+  <div class="packages-header">
+    <h2 class="packages-heading">Choose your<br><em>package</em></h2>
+  </div>
+
+  <!-- SILVER -->
+  <div class="package-row">
+    <div class="pkg-left">
+      <div>
+        <p class="pkg-tier">Package 01</p>
+        <h3 class="pkg-name"><em>Silver</em></h3>
+        <p class="pkg-duration">4 hours</p>
+      </div>
+      <div class="pkg-price">£400</div>
+    </div>
+    <div class="pkg-centre">
+      <p class="pkg-description">An experience that transforms your event into something truly memorable, delivering beautifully printed keepsakes your guests will treasure long after the night ends.</p>
+      <div>
+        <p class="pkg-includes-title">What's included</p>
+        <ul class="pkg-includes-list">
+          <li>Everything listed above</li>
+          <li>Unlimited 6×4 instant prints</li>
+          <li>Digital gallery delivered within 48hrs</li>
+          <li>Custom print design</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pkg-right">
+      <a href="contact.html" class="btn-primary">Book Silver</a>
+    </div>
+  </div>
+
+  <!-- GOLD -->
+  <div class="package-row" style="background: #1a0e10;">
+    <div class="pkg-left">
+      <div>
+        <p class="pkg-tier">Package 02</p>
+        <h3 class="pkg-name"><em>Gold</em></h3>
+        <p class="pkg-duration">6 hours</p>
+        <span class="pkg-badge">Most popular</span>
+      </div>
+      <div class="pkg-price">£580</div>
+    </div>
+    <div class="pkg-centre">
+      <p class="pkg-description">Designed for those who want more — elevated with a custom backdrop, guestbook and retro phone video messages, ensuring every moment is captured and preserved with elegance.</p>
+      <div>
+        <p class="pkg-includes-title">What's included</p>
+        <ul class="pkg-includes-list">
+          <li>Everything in Silver</li>
+          <li>Retro phone video handset</li>
+          <li>Custom backdrop</li>
+          <li>Luxury guestbook</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pkg-right">
+      <a href="contact.html" class="btn-primary">Book Gold</a>
+    </div>
+  </div>
+
+  <!-- PLATINUM -->
+  <div class="package-row">
+    <div class="pkg-left">
+      <div>
+        <p class="pkg-tier">Package 03</p>
+        <h3 class="pkg-name"><em>Platinum</em></h3>
+        <p class="pkg-duration">8 hours</p>
+      </div>
+      <div class="pkg-price">£720</div>
+    </div>
+    <div class="pkg-centre">
+      <p class="pkg-description">Our most indulgent offering — a celebration of luxury and detail, complete with premium props and a red carpet entrance, crafted for events where only the finest will do.</p>
+      <div>
+        <p class="pkg-includes-title">What's included</p>
+        <ul class="pkg-includes-list">
+          <li>Everything in Gold</li>
+          <li>Premium props</li>
+          <li>Red carpet entrance</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pkg-right">
+      <a href="contact.html" class="btn-primary">Book Platinum</a>
+    </div>
+  </div>
+
+  <!-- FLEXIBLE HIRE -->
+  <div class="flexible-section">
+    <div>
+      <p class="flexible-eyebrow">Not sure how long?</p>
+      <h3 class="flexible-heading">Flexible <em>Hire</em></h3>
+    </div>
+    <div>
+      <div class="flexible-price">£120<span style="font-size:1.2rem; color:var(--muted);">/hr</span></div>
+      <p class="flexible-sub">Minimum 1 hour</p>
+    </div>
+    <div>
+      <p class="flexible-desc">Need us for a shorter set or looking to extend the evening? We offer hourly hire from £120 per hour — simply get in touch and we will build something around your event.</p>
+      <a href="contact.html" class="btn-outline" style="margin-top:1.5rem; display:inline-block;">Get in touch</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <h2 class="faq-heading">Common<br><em>questions</em></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span class="faq-q">How much space do you need?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-body" role="region">
+          <p class="faq-a">The booth itself takes up a 2m × 2m footprint. We recommend a total floor space of around 3m × 3m so guests have room to pose comfortably.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span class="faq-q">Do you travel outside Manchester?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-body" role="region">
+          <p class="faq-a">Yes — we cover the whole of the UK. A travel surcharge applies for events more than 25 miles from Manchester city centre. We'll confirm the cost when you enquire.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span class="faq-q">How does delivery and setup work?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-body" role="region">
+          <p class="faq-a">We arrive at least 2 hours before your hire starts, set everything up, and run a test before guests arrive. At the end we handle takedown and collection — you don't touch a thing.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span class="faq-q">What happens if something goes wrong?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-body" role="region">
+          <p class="faq-a">We're fully insured and carry backup equipment. In the unlikely event of a technical issue, our attendant handles it on the spot.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span class="faq-q">Can we customise the print design?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-body" role="region">
+          <p class="faq-a">Yes. We'll send you a template before the event and include your names, date, or logo — whatever fits your event.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <span class="faq-q">How do we get the digital gallery?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-body" role="region">
+          <p class="faq-a">We send a download link to your email within 48 hours of the event.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div>
+      <p class="cta-eyebrow">Ready when you are</p>
+      <h2 class="cta-heading">Begin Your<br><em>Experience</em></h2>
+      <p class="cta-body">Every great celebration starts with a conversation. Tell us about your event and we will take care of everything else.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-primary">Send Your Enquiry</a>
+        <a href="mailto:enquiry@nuvorastudio.co.uk" class="btn-outline">enquiry@nuvorastudio.co.uk</a>
+      </div>
+    </div>
+    <div class="cta-right">
+      <p class="cta-quote">"The booth was an absolute hit — our guests were queuing up all night. The prints came out beautifully and the attendant was brilliant."</p>
+      <p class="cta-quote-attr">— Sarah &amp; James, wedding reception, Manchester</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <a href="/" class="footer-logo">Nuvora <span>Studio</span></a>
+    <p class="footer-tagline">Premium event experiences for weddings, parties and corporate events across Manchester and the UK.</p>
+    <div class="footer-social">
+      <a href="https://instagram.com/nuvorastudiouk" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://tiktok.com/@nuvorastudiouk" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+  <div>
+    <p class="footer-col-title">Navigation</p>
+    <ul class="footer-links" role="list">
+      <li><a href="/">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <p class="footer-col-title">Contact</p>
+    <p class="footer-contact-item"><a href="mailto:enquiry@nuvorastudio.co.uk">enquiry@nuvorastudio.co.uk</a></p>
+    <p class="footer-contact-item"><a href="https://instagram.com/nuvorastudiouk" target="_blank" rel="noopener">@nuvorastudiouk</a></p>
+    <p class="footer-contact-item" style="margin-top:1.25rem;">Manchester &amp; UK-wide</p>
+  </div>
+</footer>
+
+<div class="footer-bottom">
+  <p class="footer-legal">© 2026 Nuvora Studio Ltd. Registered in England &amp; Wales.</p>
+  <p class="footer-legal">nuvorastudio.co.uk</p>
+</div>
+
+<script>
+  const nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

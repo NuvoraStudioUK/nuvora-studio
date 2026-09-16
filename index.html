@@ -30,7 +30,8 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scrollbar-width: none; }
+html::-webkit-scrollbar { display: none; }
 img { display: block; max-width: 100%; }
 a { color: inherit; }
 
@@ -99,6 +100,18 @@ body {
   transition: border-color 0.2s, color 0.2s !important;
 }
 .nav-cta:hover { border-color: var(--gold) !important; color: var(--gold) !important; }
+.nav-mobile-cta {
+  display: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--off-white);
+  border: 1px solid rgba(247,244,239,0.3);
+  padding: 0.45rem 1rem;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s, color 0.2s;
+}
+.nav-mobile-cta:hover { border-color: var(--gold); color: var(--gold); }
 
 /* BUTTONS */
 .btn-primary {
@@ -368,6 +381,7 @@ footer {
 @media (max-width: 768px) {
   :root { --pad-x: 1.5rem; --pad-y: 4rem; }
   .nav-links { display: none; }
+  .nav-mobile-cta { display: inline-block; }
   .hero { padding-bottom: 4rem; }
   .hero-scroll { display: none; }
   .proof-strip { justify-content: flex-start; gap: 1.25rem; }
@@ -400,6 +414,7 @@ footer {
     <li><a href="testimonials.html">Testimonials</a></li>
     <li><a href="contact.html" class="nav-cta">Enquire</a></li>
   </ul>
+  <a href="contact.html" class="nav-mobile-cta">Enquire</a>
 </div>
 
 <main id="main">

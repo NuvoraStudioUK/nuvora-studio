@@ -220,13 +220,14 @@ body {
   overflow: hidden;
   background: var(--mid);
   cursor: pointer;
+  display: block;
 }
 /* Varied heights for visual rhythm */
-.photo-item:nth-child(5n+1) .photo-placeholder { padding-bottom: 130%; }
-.photo-item:nth-child(5n+2) .photo-placeholder { padding-bottom: 75%; }
-.photo-item:nth-child(5n+3) .photo-placeholder { padding-bottom: 100%; }
-.photo-item:nth-child(5n+4) .photo-placeholder { padding-bottom: 85%; }
-.photo-item:nth-child(5n+5) .photo-placeholder { padding-bottom: 115%; }
+.photo-item:nth-child(5n+1) { height: 380px; }
+.photo-item:nth-child(5n+2) { height: 220px; }
+.photo-item:nth-child(5n+3) { height: 300px; }
+.photo-item:nth-child(5n+4) { height: 260px; }
+.photo-item:nth-child(5n+5) { height: 340px; }
 
 /* Hover overlay showing category label */
 .photo-item-overlay {
@@ -249,7 +250,9 @@ body {
 
 .photo-placeholder {
   width: 100%;
-  position: relative;
+  height: 100%;
+  position: absolute;
+  inset: 0;
 }
 .placeholder-inner {
   position: absolute;

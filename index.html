@@ -84,7 +84,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--bla
 @keyframes scrollPulse { 0%,100% { opacity:0.3; } 50% { opacity:1; } }
 
 /* REVIEW STRIP (home) */
-.review-strip { display: flex; gap: 3rem; padding: 1.25rem 3rem; border-bottom: 1px solid var(--rule); background: var(--white); }
+.review-strip { display: flex; gap: 3rem; padding: 1.25rem 3rem; border-bottom: 1px solid var(--rule); background: var(--white); justify-content: center; }
 .review-strip-item { font-size: 0.78rem; color: var(--mid); font-style: italic; }
 .review-strip-item span { color: var(--gold); font-style: normal; margin-right: 0.4rem; font-size: 0.7rem; }
 
@@ -96,7 +96,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--bla
 .feature-col p { font-size: 0.8rem; color: var(--mid); line-height: 1.65; }
 .feature-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: rgba(0,0,0,0.05); line-height:1; margin-bottom: 1rem; }
 
-.pricing-section { padding: 4rem 3rem; border-bottom: 1px solid var(--rule); }
+.pricing-section { padding: 4rem 3rem; border-bottom: 1px solid var(--rule); max-width: 1100px; margin: 0 auto; width: 100%; }
 .pricing-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 500; margin-bottom: 2rem; }
 .pricing-section h2 em { font-style: italic; color: var(--mid); }
 .pricing-table { width: 100%; border-collapse: collapse; }
@@ -192,7 +192,7 @@ footer a { color: var(--mid); text-decoration: none; }
   </div>
 </div>
 
-<div class="pricing-section">
+<div style="border-bottom:1px solid var(--rule);"><div class="pricing-section">
   <h2>Our <em>packages</em></h2>
   <table class="pricing-table">
     <thead>
@@ -228,7 +228,7 @@ footer a { color: var(--mid); text-decoration: none; }
     <a href="services.html" class="btn-dark">View full packages</a>
     <a href="contact.html" class="btn-outline">Talk to us about your event</a>
   </div>
-</div>
+</div></div>
 
 <div class="cta-band">
   <p class="cta-eyebrow">Manchester &amp; UK-wide</p>

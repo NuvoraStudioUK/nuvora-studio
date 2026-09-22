@@ -154,6 +154,8 @@ footer a { color: var(--mid); text-decoration: none; }
 .filter-bar { padding:1.25rem 3rem; border-bottom:1px solid var(--rule); display:flex; gap:0.5rem; }
 .filter-btn { padding:0.35rem 1rem; border-radius:40px; border:1px solid var(--rule); font-size:0.7rem; letter-spacing:0.06em; cursor:pointer; background:transparent; color:var(--mid); font-family:'Inter',sans-serif; }
 .filter-btn.active { background:var(--black); color:var(--white); border-color:var(--black); font-weight:500; }
+
+/* ALL grid */
 .portfolio-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule); border-bottom:1px solid var(--rule); }
 .p-cell { aspect-ratio:3/4; position:relative; display:flex; align-items:flex-end; padding:0.75rem; overflow:hidden; }
 .p-cell:nth-child(5n+1) { background:#D9D3CA; }
@@ -164,6 +166,21 @@ footer a { color: var(--mid); text-decoration: none; }
 .p-cell-icon { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
 .p-cell-icon svg { width:28px; height:28px; color:rgba(0,0,0,0.12); }
 .p-label { position:relative; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; background:rgba(255,255,255,0.7); color:var(--mid); padding:0.18rem 0.5rem; border-radius:40px; backdrop-filter:blur(4px); }
+
+/* CAROUSEL */
+.carousel-wrap { display:none; position:relative; border-bottom:1px solid var(--rule); overflow:hidden; background:var(--rule); }
+.carousel-wrap.active { display:block; }
+.carousel-track { display:flex; transition:transform 0.4s cubic-bezier(0.22,1,0.36,1); }
+.carousel-slide { flex:0 0 25%; min-width:25%; aspect-ratio:3/4; position:relative; display:flex; align-items:flex-end; padding:0.75rem; overflow:hidden; background:#D9D3CA; }
+.carousel-slide:nth-child(2) { background:#E3DED5; }
+.carousel-slide:nth-child(3) { background:#CEC8BE; }
+.carousel-slide:nth-child(4) { background:#DAD5CB; }
+.carousel-nav { position:absolute; top:50%; transform:translateY(-50%); z-index:5; display:flex; justify-content:space-between; width:100%; padding:0 1rem; pointer-events:none; }
+.carousel-btn { width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.85); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; pointer-events:all; font-size:1rem; color:var(--black); backdrop-filter:blur(4px); }
+.carousel-btn:hover { background:white; }
+.carousel-dots { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); display:flex; gap:0.4rem; }
+.carousel-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.4); border:none; cursor:pointer; padding:0; }
+.carousel-dot.active { background:rgba(255,255,255,0.9); }
 .portfolio-more { padding:3rem; text-align:center; border-bottom:1px solid var(--rule); }
 .portfolio-more p { font-size:0.82rem; color:var(--soft); margin-bottom:1rem; }
 </style>
@@ -190,21 +207,58 @@ footer a { color: var(--mid); text-decoration: none; }
 </div>
 
 <div class="filter-bar">
-  <button class="filter-btn active" onclick="filterPortfolio('all',this)">All</button>
-  <button class="filter-btn" onclick="filterPortfolio('wedding',this)">Weddings</button>
-  <button class="filter-btn" onclick="filterPortfolio('corporate',this)">Corporate</button>
-  <button class="filter-btn" onclick="filterPortfolio('party',this)">Parties &amp; Proms</button>
+  <button class="filter-btn active" onclick="showSection('all',this)">All</button>
+  <button class="filter-btn" onclick="showSection('wedding',this)">Weddings</button>
+  <button class="filter-btn" onclick="showSection('corporate',this)">Corporate</button>
+  <button class="filter-btn" onclick="showSection('party',this)">Parties &amp; Proms</button>
 </div>
 
-<div class="portfolio-grid" id="portfolio-grid">
-  <div class="p-cell" data-cat="wedding"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Wedding</span></div>
-  <div class="p-cell" data-cat="party"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Party</span></div>
-  <div class="p-cell" data-cat="corporate"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Corporate</span></div>
-  <div class="p-cell" data-cat="wedding"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Wedding</span></div>
-  <div class="p-cell" data-cat="party"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Prom</span></div>
-  <div class="p-cell" data-cat="party"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Birthday</span></div>
-  <div class="p-cell" data-cat="corporate"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Corporate</span></div>
-  <div class="p-cell" data-cat="wedding"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Wedding</span></div>
+<!-- ALL grid -->
+<div class="portfolio-grid" id="grid-all">
+  <div class="p-cell"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Wedding</span></div>
+  <div class="p-cell"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Party</span></div>
+  <div class="p-cell"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Corporate</span></div>
+  <div class="p-cell"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Wedding</span></div>
+  <div class="p-cell"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Prom</span></div>
+  <div class="p-cell"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Birthday</span></div>
+  <div class="p-cell"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Corporate</span></div>
+  <div class="p-cell"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Wedding</span></div>
+</div>
+
+<!-- WEDDINGS carousel -->
+<div class="carousel-wrap" id="grid-wedding" data-index="0">
+  <div class="carousel-track">
+    <div class="carousel-slide" style="background:#D9D3CA;"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Wedding</span></div><div class="carousel-slide" style="background:#E3DED5;"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Wedding</span></div><div class="carousel-slide" style="background:#CEC8BE;"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Wedding</span></div><div class="carousel-slide" style="background:#DAD5CB;"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Wedding</span></div><div class="carousel-slide" style="background:#D2CCC3;"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Wedding</span></div>
+  </div>
+  <div class="carousel-nav">
+    <button class="carousel-btn" onclick="carouselPrev('grid-wedding')">&#8592;</button>
+    <button class="carousel-btn" onclick="carouselNext('grid-wedding')">&#8594;</button>
+  </div>
+  <div class="carousel-dots" id="dots-grid-wedding"></div>
+</div>
+
+<!-- CORPORATE carousel -->
+<div class="carousel-wrap" id="grid-corporate" data-index="0">
+  <div class="carousel-track">
+    <div class="carousel-slide" style="background:#CEC8BE;"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Corporate</span></div><div class="carousel-slide" style="background:#D9D3CA;"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Corporate</span></div><div class="carousel-slide" style="background:#E3DED5;"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Corporate</span></div><div class="carousel-slide" style="background:#C9C3B9;"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Corporate</span></div>
+  </div>
+  <div class="carousel-nav">
+    <button class="carousel-btn" onclick="carouselPrev('grid-corporate')">&#8592;</button>
+    <button class="carousel-btn" onclick="carouselNext('grid-corporate')">&#8594;</button>
+  </div>
+  <div class="carousel-dots" id="dots-grid-corporate"></div>
+</div>
+
+<!-- PARTIES & PROMS carousel -->
+<div class="carousel-wrap" id="grid-party" data-index="0">
+  <div class="carousel-track">
+    <div class="carousel-slide" style="background:#E3DED5;"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Party</span></div><div class="carousel-slide" style="background:#DAD5CB;"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Prom</span></div><div class="carousel-slide" style="background:#D9D3CA;"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Birthday</span></div><div class="carousel-slide" style="background:#CEC8BE;"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Party</span></div><div class="carousel-slide" style="background:#C9C3B9;"><div class="p-cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><span class="p-label">Prom</span></div>
+  </div>
+  <div class="carousel-nav">
+    <button class="carousel-btn" onclick="carouselPrev('grid-party')">&#8592;</button>
+    <button class="carousel-btn" onclick="carouselNext('grid-party')">&#8594;</button>
+  </div>
+  <div class="carousel-dots" id="dots-grid-party"></div>
 </div>
 
 <div class="portfolio-more">
@@ -227,13 +281,63 @@ footer a { color: var(--mid); text-decoration: none; }
 
 <footer><span>© 2026 Nuvora Studio Ltd. Registered in England &amp; Wales.</span><span><a href="mailto:enquiry@nuvorastudio.co.uk">enquiry@nuvorastudio.co.uk</a> &nbsp;·&nbsp; <a href="https://instagram.com/nuvorastudiouk">@nuvorastudiouk</a></span></footer>
 <script>
-function filterPortfolio(cat, btn) {
+function showSection(cat, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.p-cell').forEach(c => {
-    c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+  document.getElementById('grid-all').style.display = cat === 'all' ? 'grid' : 'none';
+  ['wedding','corporate','party'].forEach(function(c) {
+    var el = document.getElementById('grid-' + c);
+    el.classList.toggle('active', cat === c);
   });
 }
+
+function initDots(id) {
+  var wrap = document.getElementById(id);
+  var slides = wrap.querySelectorAll('.carousel-slide');
+  var perPage = 4;
+  var pages = Math.ceil(slides.length / perPage);
+  var dotsEl = document.getElementById('dots-' + id);
+  dotsEl.innerHTML = '';
+  for (var i = 0; i < pages; i++) {
+    var d = document.createElement('button');
+    d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('data-page', i);
+    d.onclick = (function(idx){ return function(){ goToPage(id, idx); }; })(i);
+    dotsEl.appendChild(d);
+  }
+}
+
+function goToPage(id, page) {
+  var wrap = document.getElementById(id);
+  var slides = wrap.querySelectorAll('.carousel-slide');
+  var perPage = 4;
+  var pages = Math.ceil(slides.length / perPage);
+  page = Math.max(0, Math.min(page, pages - 1));
+  wrap.dataset.index = page;
+  var slideW = 100 / perPage;
+  wrap.querySelector('.carousel-track').style.transform = 'translateX(-' + (page * perPage * slideW) + '%)';
+  wrap.querySelectorAll('.carousel-dot').forEach(function(d, i) {
+    d.classList.toggle('active', i === page);
+  });
+}
+
+function carouselNext(id) {
+  var wrap = document.getElementById(id);
+  var slides = wrap.querySelectorAll('.carousel-slide');
+  var pages = Math.ceil(slides.length / 4);
+  goToPage(id, Math.min(parseInt(wrap.dataset.index) + 1, pages - 1));
+}
+
+function carouselPrev(id) {
+  var wrap = document.getElementById(id);
+  goToPage(id, Math.max(parseInt(wrap.dataset.index) - 1, 0));
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  initDots('grid-wedding');
+  initDots('grid-corporate');
+  initDots('grid-party');
+});
 </script>
 <script>window.addEventListener("load",function(){setTimeout(function(){var s=document.getElementById("splash");s.classList.add("hide");setTimeout(function(){s.style.display="none";},900);},1800);});</script>
 </body></html>

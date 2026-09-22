@@ -143,6 +143,21 @@ footer a { color: var(--mid); text-decoration: none; }
 }
 
 /* MOBILE MENU */
+
+@media (max-width: 768px) {
+  .site-nav, .vh-nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 1.25rem !important;
+  }
+  .hamburger {
+    display: flex !important;
+    margin-left: auto;
+  }
+  .nav-enquire { display: none !important; }
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
